@@ -15,9 +15,7 @@ def ticker_detail(ticker):
     ticker = yf.Ticker(ticker)
     hist = ticker.history(period="max")
 
-    return type(hist)
-
-print(ticker_detail("TSLA"))
+    return hist
 
 
 def price_daily(ticker,start,end):
@@ -61,7 +59,4 @@ def sr(ticker):
     sharpe_ratio =average_daily_return/statistics.stdev(daily_returns)*math.sqrt(365)
 
     return sharpe_ratio
-
-#print(price("BTC-USD"))
-#print(sr("BTC-USD"))
 

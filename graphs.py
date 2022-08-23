@@ -59,3 +59,7 @@ def weekly_graph(ticker):
     plt.ylabel(f'{currency.upper()} Price ($)')
     plt.xlabel('Date (weekly)', rotation=0)
     plt.savefig(f'{ticker}weekly.png')
+
+
+def deletePNG(ticker):
+    
