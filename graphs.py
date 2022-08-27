@@ -1,10 +1,14 @@
 # Graph price over time with matplotlib
 
+from genericpath import isfile
 import matplotlib.pyplot as plt
 import pandas as pd
 import yfinance as yf
+import os
 
 def daily_graph(ticker):
+
+
 
     plt.figure()
 
@@ -61,5 +65,18 @@ def weekly_graph(ticker):
     plt.savefig(f'{ticker}weekly.png')
 
 
+def deleteGraph(ticker):
 
+    # If weekly file exist for ticker
+    weeklyFile = ticker.lower() + "weekly.png"
     
+    if os.path.isfile(weeklyFile):
+        os.remove(weeklyFile)
+        return
+    
+    # If daily file exist for ticker
+    dailyFile = ticker.lower() + "daily.png"
+
+    if os.path.isfile(dailyFile):
+        os.remove(dailyFile)
+        return
