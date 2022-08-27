@@ -61,5 +61,5 @@ def weekly_graph(ticker):
     plt.savefig(f'{ticker}weekly.png')
 
 
-def deletePNG(ticker):
+
     

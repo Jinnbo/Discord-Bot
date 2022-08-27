@@ -9,6 +9,10 @@ intents.message_content = True
 
 client = discord.Client(intents=intents)
 
+with open('token.txt') as f:
+    TOKEN = f.read()
+
+
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
@@ -60,8 +64,5 @@ async def on_message(message):
         await message.channel.send(file=discord.File(f'{sr_ticker}weekly.png'))
 
 
-
-
-
-client.run('ODIxMjMyNjE0MjQ5NDYzODI5.YFAueQ.CYKjtXlMGhn7jVzbMtR3fSbHDdc')
+client.run(TOKEN)
 
