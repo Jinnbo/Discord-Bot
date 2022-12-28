@@ -5,4 +5,4 @@
 https://discord.com/oauth2/authorize?client_id=821232614249463829&permissions=0&scope=bot%20applications.commands) and follow the instructions
 
 <br>
-![image](https://imgur.com/a/7cocooL.gif)
+![image](https://i.imgur.com/a/7cocooL.gif)
