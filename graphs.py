@@ -8,8 +8,6 @@ import os
 
 def daily_graph(ticker):
 
-
-
     plt.figure()
 
     tick = yf.Ticker(ticker)

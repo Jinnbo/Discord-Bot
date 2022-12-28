@@ -1,6 +1,7 @@
 import discord
 import assetprices
 import graphs
+from keep_alive import keep_alive
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -9,7 +10,6 @@ client = discord.Client(intents=intents)
 # store token from token.txt
 with open('token.txt') as f:
     TOKEN = f.read()
-
 
 # Initialization
 @client.event
@@ -20,7 +20,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
 
-    # Ignore messages from the yourself (bot)
+    # Ignore messages from yourself 
     if message.author == client.user:
         return
 
@@ -44,7 +44,6 @@ async def on_message(message):
         try:
             price = assetprices.close_price(ticker)
         except:
-            print("Ticker not avaiable")
             await message.channel.send(f'{ticker} is not avaiable')
             return
 
@@ -60,7 +59,6 @@ async def on_message(message):
         try:
             price = assetprices.close_price(sr_ticker)
         except:
-            print("Ticker not avaiable")
             await message.channel.send(f'{sr_ticker} is not avaiable')
             return
 
@@ -75,7 +73,6 @@ async def on_message(message):
         try:
             price = assetprices.close_price(sr_ticker)
         except:
-            print("Ticker not avaiable")
             await message.channel.send(f'{sr_ticker} is not avaiable')
             return
 
@@ -99,12 +96,15 @@ async def on_message(message):
             await message.channel.send(f'{sr_ticker} is not avaiable')
             return
 
-        # Message graph in channel
+        # Send graph in channel
         graphs.weekly_graph(sr_ticker)
         await message.channel.send(file=discord.File(f'{sr_ticker}weekly.png'))
 
         # Delete graph
         graphs.deleteGraph(sr_ticker)
+
+# Call keep_alive function
+keep_alive()
 
 # Run bot with Token from token.txt
 client.run(TOKEN)
